@@ -1,0 +1,93 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="7">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="option" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyBroadExceptionInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="12">
+            <item index="0" class="java.lang.String" itemvalue="pandas" />
+            <item index="1" class="java.lang.String" itemvalue="schedule" />
+            <item index="2" class="java.lang.String" itemvalue="langdetect" />
+            <item index="3" class="java.lang.String" itemvalue="maxminddb" />
+            <item index="4" class="java.lang.String" itemvalue="cryptography" />
+            <item index="5" class="java.lang.String" itemvalue="google" />
+            <item index="6" class="java.lang.String" itemvalue="maxminddb-geolite2" />
+            <item index="7" class="java.lang.String" itemvalue="pycountry" />
+            <item index="8" class="java.lang.String" itemvalue="simple_salesforce" />
+            <item index="9" class="java.lang.String" itemvalue="py3-validate-email" />
+            <item index="10" class="java.lang.String" itemvalue="textblob" />
+            <item index="11" class="java.lang.String" itemvalue="coinmetrics" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="W605" />
+          <option value="E127" />
+          <option value="E501" />
+          <option value="E731" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N802" />
+          <option value="N801" />
+          <option value="N806" />
+          <option value="N803" />
+          <option value="N812" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="id" />
+          <option value="type" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="gid_reference_list" />
+          <option value="variable_product_cost.entire_product_variable_cost.amortization_date" />
+          <option value="product_revenue.product_revenue.*" />
+          <option value="product_cost_of_sales.cost_of_sales.gross_aum" />
+          <option value="product_cost_of_sales.cost_of_sales.amortization_date" />
+          <option value="boxsdk.object.item.Item.id" />
+          <option value="boxsdk.object.item.Item.name" />
+          <option value="boxsdk.object.item.Item.file_version" />
+          <option value="boxsdk.object.item.Item.file_version_id" />
+          <option value="PPO_MACD_RSI.decision_maker.decision_maker_from_config.*" />
+          <option value="list.__getitem__" />
+          <option value="PPO_MACD_RSI.decision_maker.base_decision_maker_from_config.*" />
+          <option value="object.*" />
+          <option value="PPO_MACD_RSI.signal_creator.decision_maker.base_decision_maker_from_config.*" />
+          <option value="float.*" />
+          <option value="list.__rshift__" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
