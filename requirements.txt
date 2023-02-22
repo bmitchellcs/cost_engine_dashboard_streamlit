@@ -1,0 +1,7 @@
+pymysql
+sqlalchemy
+pandas
+altair
+streamlit
+plotly
+watchdog
