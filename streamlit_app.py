@@ -39,10 +39,15 @@ st.table(format_values_in_count_table(unique_fee_table_sec_counter))
 st.write("Dataset Breakdown")
 st.table(connect_to_dataset())
 
+
+def concatenate_bounds(row):
+    return f"{row['Lower Bound']} - {row['Upper Bound']}"
+
+
 st.write("Bloomberg Bands")
 fee_table = pd.read_csv("unique_fee_reference_sheet.csv")
 fee_table['Monthly Cost'] = fee_table['Price per annum'] / 12
-fee_table['Band'] = fee_table['Lower Bound'] + ' - ' + fee_table['Upper Bound']
+fee_table['Band'] = fee_table.apply(concatenate_bounds, axis=1)
 fee_table = fee_table.drop(columns=['Price per annum', 'Lower Bound', 'Upper Bound'])
 fee_table['Monthly Cost'] = fee_table['Monthly Cost'].apply(lambda x: "${:.2f}".format(x))
 fee_table = pd.pivot_table(fee_table, values='Monthly Cost', index='Band', columns='Data Category')
