@@ -4,6 +4,7 @@ from access_fees import return_access_fees
 from unique_fees import return_unique_fees
 from requests_plot import request_chart
 import streamlit as st
+import pandas as pd
 
 default_unique_dict = {"Derived": 0, "Pricing": 0, "Security Master": 0}
 default_fee_modifier = [{"Data Category": "Derived", "Number of Securities": 0, "Frequency per Day": 0}]
@@ -38,12 +39,14 @@ st.table(format_values_in_count_table(unique_fee_table_sec_counter))
 st.write("Dataset Breakdown")
 st.table(connect_to_dataset())
 
-# st.write("Bloomberg Bands")
-# fee_table = pd.read_csv("unique_fee_reference_sheet.csv")
-# fee_table['Monthly Cost'] = fee_table['Price per annum'] / 12
-# fee_table = fee_table.drop(columns=['Price per annum'])
-# fee_table['Monthly Cost'] = fee_table['Monthly Cost'].apply(lambda x: "${:.2f}".format(x))
-# st.table(fee_table)
+st.write("Bloomberg Bands")
+fee_table = pd.read_csv("unique_fee_reference_sheet.csv")
+fee_table['Monthly Cost'] = fee_table['Price per annum'] / 12
+fee_table['Band'] = fee_table['Lower Bound'] + ' - ' + fee_table['Upper Bound']
+fee_table = fee_table.drop(columns=['Price per annum', 'Lower Bound', 'Upper Bound'])
+fee_table['Monthly Cost'] = fee_table['Monthly Cost'].apply(lambda x: "${:.2f}".format(x))
+fee_table = pd.pivot_table(fee_table, values='Monthly Cost', index='Band', columns='Data Category')
+st.table(fee_table)
 
 st.write("Unique Fees")
 st.table(format_values_in_fee_table(unique_fee_table))
