@@ -1,12 +1,13 @@
 Data Category,Lower Bound,Upper Bound,Price per annum
 Security Master,1,25,265
-Security Master,25,50,535
+Security Master,26,50,535
 Security Master,51,100,1070
 Security Master,101,250,2675
 Security Master,251,500,5355
 Security Master,501,1000,10710
 Security Master,1001,2500,26775
 Security Master,2501,5000,53555
+Security Master,5001,7500,80330
 Pricing,1,25,53
 Pricing,26,50,105
 Pricing,51,100,210
@@ -15,6 +16,7 @@ Pricing,251,500,1070
 Pricing,501,1000,2140
 Pricing,1001,2500,5355
 Pricing,2501,5000,10710
+Pricing,5001,7500,16065
 Derived,1,25,80
 Derived,26,50,160
 Derived,51,100,320
@@ -24,5 +26,4 @@ Derived,501,1000,3210
 Derived,1001,2500,8030
 Derived,2501,5000,16065
 Derived,5001,7500,24100
-Derived,7501,10000,32130
 Historical,1001,2500,16065
