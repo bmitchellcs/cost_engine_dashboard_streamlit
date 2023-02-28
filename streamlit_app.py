@@ -51,11 +51,11 @@ fee_table['Band'] = fee_table.apply(concatenate_bounds, axis=1)
 fee_table = fee_table.drop(columns=['Price per annum', 'Lower Bound'])
 fee_table = pd.pivot_table(fee_table, values='Monthly Cost', index=['Band', 'Upper Bound'],
                            columns='Data Category').reset_index().rename_axis(None, axis=1)
-fee_table = fee_table.sort_values(by=['Upper Bound']).drop(columns=['Upper Bound'])
+fee_table = fee_table.sort_values(by=['Upper Bound']).drop(columns=['Upper Bound']).reset_index(drop=True)
 
 for column in ['Derived', 'Pricing', 'Security Master']:
     fee_table[column] = fee_table[column].apply(lambda x: "${:,.2f}".format(x))
-
+st.write("Bloomberg Bands")
 st.table(fee_table)
 
 st.write("Unique Fees")
