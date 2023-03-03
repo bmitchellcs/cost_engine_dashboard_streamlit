@@ -61,12 +61,6 @@ if __name__ == '__main__':
     st.write("Distinct Number of Securities by Data Category and Month")
     st.table(unique_fee_table_sec_counter)
 
-    reference_table = unique_fee_table_sec_counter[[unique_fee_table_sec_counter.columns[-1]]].copy().reset_index(
-        drop=False)
-
-    reference_table.columns = ['data_category', 'value']
-    reference_table = {i['data_category']: int(i['value']) for i in reference_table.to_dict("records")}
-
 
     def concatenate_bounds(row):
         return f"{row['Lower Bound']} - {row['Upper Bound']}"
