@@ -1,0 +1,52 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  sync-pnl-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Get Github action IP
+        id: ip
+        uses: haythem/public-ip@v1.2
+      - name: Add Github Actions IP to Security group
+        run: |
+          aws ec2 authorize-security-group-ingress --group-id sg-09d76f0c6cd2575a6 --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          AWS_DEFAULT_REGION: 'eu-west-2'
+      - name: Deploy to my EC2 instance
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_DEV_KEY }}
+          SOURCE: "./"
+          REMOTE_HOST: ${{ secrets.EC2_DEV_HOST }}
+          REMOTE_USER: "ubuntu"
+          TARGET: "/home/ubuntu/pricing_model"
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.EC2_DEV_HOST }}
+          username: "ubuntu"
+          key: ${{ secrets.EC2_DEV_KEY }}
+          script: |
+            cd /home/ubuntu/pnl_project
+            git stash
+            git pull
+            # sudo docker build --tag nginx ./nginx
+            sudo docker-compose up -d
+      - name: Remove Github Actions IP from security group
+        run: |
+          aws ec2 revoke-security-group-ingress --group-id sg-09d76f0c6cd2575a6 --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          AWS_DEFAULT_REGION: 'eu-west-2'
+        if: always()
