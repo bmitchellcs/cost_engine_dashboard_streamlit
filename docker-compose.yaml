@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+  streamlit_application:
+    build: .
+    expose:
+      - 8501
+    environment:
+      - DB_UNAME=${DB_UNAME}
+      - DB_PWD=${DB_PWD}
+      - DB_HOST=${DB_HOST}
+    container_name: streamlit_application
+    networks:
+      - streamlit_network
+    restart: always
+
+networks:
+  streamlit_network:
