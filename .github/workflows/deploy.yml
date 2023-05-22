@@ -30,7 +30,7 @@ jobs:
           username: "ubuntu"
           key: ${{ secrets.EC2_DEV_KEY }}
           script: |
-            cd /home/ubuntu/pnl_project
+            cd /home/ubuntu/pricing_model
             git stash
             git pull
             # sudo docker build --tag nginx ./nginx
