@@ -5,6 +5,8 @@ services:
     build: .
     expose:
       - 8501
+    ports:
+      - "8501:8501"
     environment:
       - db_connection_string=${db_connection_string}
     container_name: streamlit_application
