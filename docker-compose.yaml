@@ -6,9 +6,7 @@ services:
     expose:
       - 8501
     environment:
-      - DB_UNAME=${DB_UNAME}
-      - DB_PWD=${DB_PWD}
-      - DB_HOST=${DB_HOST}
+      - db_connection_string=${db_connection_string}
     container_name: streamlit_application
     networks:
       - streamlit_network
